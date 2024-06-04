@@ -38,7 +38,7 @@ To start the application, run:
 node web_chat.js
 ```
 
-ou will see a QR code in the console. Scan the QR code with your WhatsApp mobile app to establish the connection.
+You will see a QR code in the console. Scan the QR code with your WhatsApp mobile app to establish the connection.
 
 Once connected, you can send messages to your WhatsApp and get responses from the OpenAI Assistant.
 
