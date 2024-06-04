@@ -25,8 +25,7 @@ async function GenerateAssesment(message) {
     // Pass in the user question into the existing thread
     await openai.beta.threads.messages.create(thread.id, {
       role: "user",
-      content: `generate the development plan 
-       ${message}`,
+      content: `${message}`,
     });
 
     console.log("Message Created");
