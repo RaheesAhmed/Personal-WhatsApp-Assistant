@@ -1,6 +1,7 @@
-const { Client, LocalAuth } = require("whatsapp-web.js");
-const qrcode = require("qrcode-terminal");
-const { GenerateAssesment } = require("./chat_with_assistant.js");
+import pkg from "whatsapp-web.js";
+const { Client, LocalAuth } = pkg;
+import qrcode from "qrcode-terminal";
+import { runModel } from "./chat_with_assistant.js";
 
 const client = new Client({
   puppeteer: {
@@ -40,11 +41,12 @@ client.on("message", async (msg) => {
     await client.sendSeen(msg.from);
     await client.sendPresenceAvailable();
 
-    // Indicate typing
-    await client.sendPresenceAvailable();
-    await client.sendMessage(msg.from, "_typing..._", { waitForAck: true });
+    // // Indicate typing
+    // await client.sendPresenceAvailable();
+    // await client.sendMessage(msg.from, "_typing..._", { waitForAck: true });
 
-    const response = await GenerateAssesment(msg.body);
+    const response = await runModel(msg.body);
+    console.log("RESPONSE", response);
 
     // Send the response
     await client.sendMessage(msg.from, response);

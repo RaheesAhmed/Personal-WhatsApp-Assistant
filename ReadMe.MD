@@ -1,31 +1,44 @@
-# OpenAI Assistant with WhatsApp Web
+# WhatsApp Personal AI Assistant
 
-This project integrates OpenAI Assistant API with WhatsApp using the `whatsapp-web.js` library. Users can connect their WhatsApp to the OpenAI Assistant and interact with it seamlessly.
+This project integrates a WhatsApp bot with Langchain and OpenAI gpt-4o-mini to provide intelligent responses to user messages. It uses the WhatsApp Web for messaging and it uses GPT-4o-mini for generating responses.
+
+## Features
+
+- WhatsApp integration using whatsapp-web.js
+- QR code generation for easy WhatsApp Web authentication
+- AI-powered responses using a langchain/openai
+- Document loading and vectorization for enhanced AI context
+- Persistent vector store for improved performance
 
 ## Installation
 
-### 1. Clone the Repository
+###  Clone the Repository
 
 First, clone the repository to your local machine using the following command:
 
 ```
-git clone https://github.com/RaheesAhmed/openai-assistant-with-whatsapp-web.git
+git clone https://github.com/RaheesAhmed/Personal-WhatsApp-Assistant.git
 ```
 
-### 2. Navigate to the Project Directory
-
-Move into the project directory:
-
+###  Navigate to the Project Directory
 ```
-cd openai-assistant-with-whatsapp-web
+cd Personal-WhatsApp-Assistant
 ```
 
-## 3. Install Packages
+##  Install Packages
 
 Install the required npm packages:
 
 ```
 npm i
+```
+
+## Configuration
+
+Ensure you have the necessary API keys and configuration set up for the OpenAI  API and WhatsApp Web client. These settings can typically be added in an environment configuration file (e.g., \`.env\`).
+
+```
+OPENAI_API_KEY=add your api key here
 ```
 ## Usage
 
@@ -33,34 +46,27 @@ npm i
 
 To start the application, run:
 
-
 ```
-node web_chat.js
+node index.js
 ```
 
-You will see a QR code in the console. Scan the QR code with your WhatsApp mobile app to establish the connection.
+2. Scan the generated QR code with your WhatsApp mobile app to authenticate.
 
-Once connected, you can send messages to your WhatsApp and get responses from the OpenAI Assistant.
+3. Once authenticated, the bot will respond to incoming messages with AI-generated responses.
 
 ## Project Structure
 
-- \`web_chat.js\`: Main entry point of the application.
-- \`chat_with_assistant.js\`: Contains the logic for interacting with the OpenAI Assistant API.
+- `index.js`: Main entry point for the WhatsApp bot
+- `chat_with_assistant.js`: AI model integration and document processing
+- `data/`: Directory for storing documents used for AI context
+- `Data.index`: Persistent vector store for improved performance
 
-## Requirements
+## Customization
 
-- Node.js
-- npm
+- To modify the AI's behavior, edit the system prompt in `chat_with_assistant.js`
+- To add or remove supported document types, update the `DirectoryLoader` configuration in `chat_with_assistant.js`
 
-## Configuration
 
-Ensure you have the necessary API keys and configuration set up for the OpenAI Assistant API and WhatsApp Web client. These settings can typically be added in an environment configuration file (e.g., \`.env\`).
-
-## Features
-
-- **WhatsApp Integration**: Connects WhatsApp to OpenAI Assistant.
-- **Seamless Interaction**: Users can chat with the assistant directly from their WhatsApp.
-- **Automatic Responses**: The assistant processes user messages and replies automatically.
 
 ## Troubleshooting
 
